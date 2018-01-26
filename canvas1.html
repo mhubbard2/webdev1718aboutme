@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<canvas id="myCanvas" width="400" height="400" style="border:1px solid #000000;">
+
+</canvas>
+<script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+       var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+
+// Create gradient
+var grd = ctx.createRadialGradient(175,50,5,190,180,175);
+grd.addColorStop(0,"gold");
+grd.addColorStop(1,"black");
+
+// Fill with gradient
+ctx.fillStyle = grd;
+ctx.fillRect(0,0,400,400);
+        function initials() {
+            ctx.lineWidth = 15;
+            ctx.beginPath();
+                ctx.moveTo(140, 125);
+                ctx.lineTo(140, 75);
+            ctx.stroke();
+                ctx.moveTo(140, 78);
+                ctx.lineTo(160, 100);
+                ctx.lineTo(180, 78);
+                ctx.moveTo(180, 75);
+                ctx.lineTo(180, 125);
+            ctx.stroke();
+                ctx.moveTo(200, 75);
+                ctx.lineTo(200, 125);
+                ctx.moveTo(200, 100);
+                ctx.lineTo(235, 100);
+                ctx.moveTo(235, 75);
+                ctx.lineTo(235, 125);
+            ctx.stroke();
+        }
+        initials();
+
+</script>
+</body>
+</html>
