@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+    </head>
+    <body>
+        <canvas id="myCanvas" width="480" height="2000" style="border:100px solid #BF9000"></canvas>
+        <script>
+            var container = {
+  x: 0,
+  y: 0,
+  width: 600,
+  height: 300
+};
+            var cube = [{
+  x: 50,
+  y: 100,
+  r: 10,
+  vx: 10,
+  vy: 9,
+  color: 125
+}, {
+  x: 150,
+  y: 80,
+  r: 20,
+  vx: 15,
+  vy: 8,
+  color: 205
+}, {
+  x: 90,
+  y: 150,
+  r: 5,
+  vx: 5,
+  vy: 15,
+  color: 25
+}, {
+  x: 100,
+  y: 50,
+  r: 15,
+  vx: 8,
+  vy: 10,
+  color: 100
+}];
+           
+           
+           
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+            var ballRadius = 15;
+            var x = canvas.width/3;
+            var y = canvas.height-30;
+            var dx = 2;
+            var dy = -2;
+            
+          
+            
+            
+            
+            
+            function drawSquare() {
+                ctx.beginPath();
+                ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+                ctx.fillStyle = "purple";
+                ctx.fill();
+                ctx.closePath();
+            }
+           
+           
+
+            
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawSquare();
+                
+                if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+                    dx = -dx;
+                }
+                if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
+                    dy = -dy;
+                }
+                
+                x += dx;
+                y += dy;
+           function ev_click(e) {
+        console.log(e.clientX+ " : " + e.clientY);
+        console.log(x+  " : " + y);
+        var inCircle= (e.clientX - x)*(e.clientX - x) + (e.clientY - y)*(e.clientY - y);
+        console.log(inCircle);
+        if ( inCircle< 2000) {
+            color = " #000000";
+        }
+    }
+
+            setInterval(animate, 15);
+        </script>
+    </body>
+</html>
