@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html> 
+    <head> 
+        <title>Teleporter Tap </title> 
+   <style> 
+       canvas {
+                background-color:lightblue;
+            }
+   
+   
+   
+   </style>
+   
+    </head> 
+    <body> 
+      <img id="spongebob" width="5" height="5" src="https://cdn130.picsart.com/258685421017212.png?r240x240" alt="spongebob">
+        <canvas onclick="myFunction(event)" id="myCanvas" width="1500" height="1500" style="border:10px solid green;"></canvas>
+        <button onclick="location.reload()">Restart</button>
+        <script>
+            
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+            var score=0;
+            var lives=5;
+            var randx=500;
+            var randy=500;
+            ctx.textAlign="center";
+            ctx.font="30px Arial";
+            ctx.fillText("Lives: "+lives, 60, 30);
+            ctx.fillText("Score: "+score, 925, 30);
+         var img = document.getElementById("spongebob");
+            ctx.drawImage(img, randx, randy);
+            
+           
+           
+            function myFunction(event){
+                var xpos=event.clientX;
+    
+    
+                var ypos=event.clientY;
+                if (xpos>=randx && xpos<=randx+415 && ypos>=randy && ypos<=randy+530){
+                    ctx.clearRect(0, 0, 5000, 5000);
+                    score++;
+                    ctx.fillText("Score: "+score, 925, 30);
+                    ctx.fillText("Lives: "+lives, 60, 30);
+                    randx=Math.random()*450;
+                    randy=Math.random()*450;
+                     ctx.drawImage(img, randx, randy);
+                } else {
+                    ctx.clearRect(0, 0, 5000, 5000);
+                    lives--;
+                    ctx.fillText("Score: "+score, 925, 30);
+                    ctx.fillText("Lives: "+lives, 60, 30);
+                    randx=Math.random()*450;
+                    randy=Math.random()*450;
+                      ctx.drawImage(img, randx, randy);
+                    if (lives==0){
+                        alert("Not very close, click again");
+                        location.reload();
+                    }
+                }
+                if (score==20){
+                    alert("Thanks for playing");
+                    location.reload();
+                }
+            }
+             
+        
+        </script>
+    </body> 
+</html>
